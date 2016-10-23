@@ -52,6 +52,22 @@ func max(a, b int) int {
 	return b
 }
 
+func contains(root *avlNode, key string) bool {
+	if root == nil {
+		return false
+	}
+	if key == root.Key {
+		return true
+	}
+	if key < root.Key {
+		return contains(root.Lchild, key)
+	}
+	if key > root.Key {
+		return contains(root.Rchild, key)
+	}
+	return false
+}
+
 func insert(root *avlNode, key string) *avlNode {
 	if root == nil {
 		root = &avlNode{key, 0, nil, nil}
